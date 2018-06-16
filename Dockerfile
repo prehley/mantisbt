@@ -2,7 +2,7 @@
 # Dockerfile for mantisbt
 #
 
-FROM php:5.6-apache
+FROM php:7.2-apache
 MAINTAINER Peter Rehley <peter_rehley@yahoo.com>
 
 RUN a2enmod rewrite
@@ -11,7 +11,7 @@ RUN set -xe \
     && apt-get update \
     && apt-get install -y libpng-dev libjpeg-dev libpq-dev libxml2-dev \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-    && docker-php-ext-install gd mbstring mysql mysqli pgsql soap \
+    && docker-php-ext-install gd mbstring mysqli pgsql soap \
     && rm -rf /var/lib/apt/lists/*
 
 ENV MANTIS_VER 2.15.0
