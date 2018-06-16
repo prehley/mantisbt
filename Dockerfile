@@ -9,13 +9,13 @@ RUN a2enmod rewrite
 
 RUN set -xe \
     && apt-get update \
-    && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libxml2-dev \
+    && apt-get install -y libpng-dev libjpeg-dev libpq-dev libxml2-dev \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd mbstring mysql mysqli pgsql soap \
     && rm -rf /var/lib/apt/lists/*
 
-ENV MANTIS_VER 2.14.0
-ENV MANTIS_SHA1 4731e1b43874a174e116816eba1e28357b6b90bc
+ENV MANTIS_VER 2.15.0
+ENV MANTIS_SHA1 aec01c74088993273c9cbc0bb048a00fc3078b9c
 ENV MANTIS_URL http://jaist.dl.sourceforge.net/project/mantisbt/mantis-stable/${MANTIS_VER}/mantisbt-${MANTIS_VER}.tar.gz
 ENV MANTIS_FILE mantisbt.tar.gz
 ENV MANTIS_TIMEZONE America/Los_angeles
