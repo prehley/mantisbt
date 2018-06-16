@@ -4,22 +4,27 @@ a delicate balance between simplicity and power.
 ## docker-compose.yml
 
 ```
-mantisbt:
-  image: prehley/mantisbt:latest
-  ports:
-    - "8081:80"
-  links:
-    - mysql
-  restart: always
+version: '2'
+services:
+  mantisbt:
+    image: prehley/mantisbt:latest
+    ports:
+    - 8081:80/tcp
+    links:
+    - mysql:mysql
+    restart: unless-stopped
 
-mysql:
-  image: mysql:latest
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_DATABASE=bugtracker
-    - MYSQL_USER=mantisbt
-    - MYSQL_PASSWORD=mantisbt
-  restart: always
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_PASSWORD: dbadminPassword
+      MYSQL_ROOT_PASSWORD: rootPassword
+      MYSQL_USER: dbadmin
+    restart: unless-stopped
+    volumes:
+    - /sqldump:/docker-entrypoint-initdb.d
+    command:
+    - --default_authentication_plugin=mysql_native_password
 ```
 
 > You can use `mariadb`/`postgres` instead of `mysql`.
