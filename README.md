@@ -53,6 +53,8 @@ Attempt Installation                                    [Install/Upgrade Databas
 ==================================================================================
 ```
 
+To install a new installation remove the volumes entry from the docker-compose.yml file.
+
 ## email 
 
 Append following to `/var/www/html/config_inc.php`
