@@ -53,7 +53,8 @@ Attempt Installation                                    [Install/Upgrade Databas
 ==================================================================================
 ```
 
-To install a new installation remove the volumes entry from the docker-compose.yml file.
+To install a new installation leave the /sqldump directory empty.
+To install from an existing mantisbt first export that database and then put the dump.sql file into the /sqldump directory
 
 ## email 
 
